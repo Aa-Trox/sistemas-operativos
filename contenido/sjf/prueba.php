@@ -7,6 +7,7 @@
     <title></title>
 
     <script src="contenido/sjf/js/prueba.js"></script>
+    <link type="text/css" href="styles/style.css" rel="stylesheet">
 
 </head>
 <body>
