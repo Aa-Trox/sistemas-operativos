@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>  
-    <title>SGFSimulator</title>
+    <title>Simulador de SFG</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="index.css" />
 </head>
@@ -9,16 +9,15 @@
 <body>
 
     <header class="page-header">
-            <h1>Simulador SJF</h1>
+            <h1>Simulator de SFG</h1>
     </header>
 
     
     <div class="form-group-2">
             <label>
-                Select to preemptive SJF simulations  :
+                Elegir simulaciones SJF preventivas  :
             </label>
 
-            <!-- Rounded switch -->
             <label class="switch">
                 <input type="checkbox" id="toggle">
                 <span class="slider round"></span>
@@ -29,23 +28,23 @@
     <div class="container-1">
             <form class="input-form">
                 <div class="form-group">
-                    <label>ID de Proceso: </label>
+                    <label>Proceso ID: </label>
                     <input type="number" id="PID" name="PID" value="">
                 </div>
                 <div class="form-group">
-                    <label>Tiempo de Servicio: </label>
-                    <input type="number" id="burstTime" value="">
+                    <label>Tiempo de Ejecucion: </label>
+                    <input type="number" id="ejecucionTiempo" value="">
                 </div>
                 <div class="form-group">
                     <label>Tiempo de Llegada: </label>
-                    <input type="number" id="arrivalTime" value="">
+                    <input type="number" id="llegadaTiempo" value="">
                 </div>
                 <div class="form-group">
-                    <button class="button" type="button" onclick="createTable()">Enter values</button>
+                    <button class="button" type="button" onclick="createTable()">Ingrese Valores</button>
                 </div>
 
                 <div class="form-group">
-                    <button class="button" type="button" onclick="printGanttChart()">Show Gantt Chart</button>
+                    <button class="button" type="button" onclick="printGanttChart()">Mostrar Grafico de Gantt</button>
                 </div>  
         </form>
     </div>
@@ -77,13 +76,12 @@
         <div id="chartdiv"></div>   
 
         <script type="text/javascript">
-        //"use strict";   //enabling the strict mode in js
 
         function createTable()
         {
-            var processID=document.getElementById("PID").value;
-            var burstTime=document.getElementById("burstTime").value;
-            var arrivalTime=document.getElementById("arrivalTime").value;
+            var procesoID=document.getElementById("PID").value;
+            var ejecucionTiempo=document.getElementById("ejecucionTiempo").value;
+            var llegadaTiempo=document.getElementById("llegadaTiempo").value;
 
             var table=document.getElementById("inputTable");
             var firstRow = table.insertRow(-1);
@@ -91,9 +89,9 @@
             var cell2 = firstRow.insertCell(1);
             var cell3 = firstRow.insertCell(2);
 
-            cell1.innerHTML=processID;
-            cell2.innerHTML=burstTime;
-            cell3.innerHTML=arrivalTime;
+            cell1.innerHTML=procesoID;
+            cell2.innerHTML=ejecucionTiempo;
+            cell3.innerHTML=llegadaTiempo;
 
             var x = document.getElementById("inputTable").rows.length;
            // console.log(x);
@@ -151,16 +149,13 @@
             while(true)
             {
                 var min=100;
-                var c = n; // c represents the current PID
-                if (tot == n) // total no of process = completed process loop will be terminated
+                var c = n; // c representa el PID presente
+                if (tot == n)
                     break;
                 
                 for (var i=0; i< n; i++)
                 {
-                    /*
-                     * If i'th process arrival time <= system time and its flag=0 and burst<min 
-                     * That process will be executed first 
-                     */ 
+                    
                     var count=0;
                     if ((at[i] <= clock) && (flag[i] == 0) && (bt[i]<min))
                         {
@@ -169,7 +164,6 @@
                         } 
 
                 }
-                /* If c==n means c value can not updated because no process arrival time< system time so we increase the system time */
                 if (c==n) 
                     clock++;
                 else
@@ -228,10 +222,7 @@
                     
                 for (var i=0; i< n; i++)
                 {
-                    /*
-                     * If i'th process arrival time <= system time and its flag=0 and burst<min 
-                     * That process will be executed first 
-                     */ 
+        
                     var count=0;
                     if ((at[i] <= clock) && (flag[i] == 0) && (bt[i]<min))
                         {
@@ -241,12 +232,12 @@
 
                 }
                 
-                // If there's no c:
+                // Si no hay un c:
                 if (c==n)
                 {
                     clock+=1;
                 }
-                // If there's a c:
+                // Si hay un cc:
                 else
                 {
                     bt[c]--;
@@ -260,7 +251,7 @@
 
                     if (count2==0)
                     {
-                        //temp2 holds the previous c
+                        //temp2 guarda el c previo
                         var temp2=c;
                         var temp = [];
                         temp.push(pid[c]);
@@ -307,7 +298,6 @@
 
         function generateGanttChartData(data)
         {   
-            // Data contains the processes in the required order
             var n = data.length;
             var finalData = [];
             var clock = 0;
@@ -326,10 +316,10 @@
                         }, ]
                     }
 
-                temp.category = "Process " + (parseInt(data[i][0])).toString();
+                temp.category = "Proceso " + (parseInt(data[i][0])).toString();
                 temp.segments[0].start = clock;
                 temp.segments[0].duration = data[i][1];
-                temp.segments[0].task = "Process " + (parseInt(data[i][0])).toString();
+                temp.segments[0].task = "Proceso " + (parseInt(data[i][0])).toString();
 
                 clock = clock + data[i][1];
                 finalData.push(temp);
@@ -342,7 +332,6 @@
 
         function printGanttChart()
         {
-            //chartData contains data for dataProvider KEY
             var chartData = generateGanttChartData(GetCellValues());
             
 
@@ -442,26 +431,25 @@
         <table id="statTable">
             <tr>
                 <th>PID</th>
-                <th>Complete Time</th>
-                <th>Turnaround Time</th>
-                <th>Waiting Time</th>
+                <th>Tiempo Completado</th>
+                <th>Tiempo de Respuesta</th>
+                <th>Tiempo de Espera</th>
             </tr>
         </table>
     </div>
 
     <div id="statTable-s">
             <div class="block">
-                <label>Average waiting time: </label>
+                <label>Tiempo de Espera Promedio: </label>
                 <label id="wtOutput"></label>
             </div>
 
             <div class="block">
-                <label>Average turnaround time: </label>
+                <label>Tiempo de Respuesta Promedio: </label>
                 <label id="taOutput"></label>
              </div>
         
         </div>
-
 
 </body>
 </html>
