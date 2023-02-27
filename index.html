@@ -9,13 +9,13 @@
 <body>
 
     <header class="page-header">
-            <h1>Simulator de SFG</h1>
+            <h1>Simulador de SFG (Preventivos y no Preventivos)</h1>
     </header>
 
     
     <div class="form-group-2">
             <label>
-                Elegir simulaciones SJF preventivas  :
+                Elegir simulaciones SJF preventivos  :
             </label>
 
             <label class="switch">
@@ -40,7 +40,7 @@
                     <input type="number" id="llegadaTiempo" value="">
                 </div>
                 <div class="form-group">
-                    <button class="button" type="button" onclick="createTable()">Ingrese Valores</button>
+                    <button class="button" type="button" onclick="crearTabla()">Ingrese Valores</button>
                 </div>
 
                 <div class="form-group">
@@ -77,28 +77,28 @@
 
         <script type="text/javascript">
 
-        function createTable()
+        function crearTabla()
         {
             var procesoID=document.getElementById("PID").value;
             var ejecucionTiempo=document.getElementById("ejecucionTiempo").value;
             var llegadaTiempo=document.getElementById("llegadaTiempo").value;
 
             var table=document.getElementById("inputTable");
-            var firstRow = table.insertRow(-1);
-            var cell1 = firstRow.insertCell(0);
-            var cell2 = firstRow.insertCell(1);
-            var cell3 = firstRow.insertCell(2);
+            var primeraCelda = table.insertRow(-1);
+            var celda1 = primeraCelda.insertCell(0);
+            var celda2 = primeraCelda.insertCell(1);
+            var celda3 = primeraCelda.insertCell(2);
 
-            cell1.innerHTML=procesoID;
-            cell2.innerHTML=ejecucionTiempo;
-            cell3.innerHTML=llegadaTiempo;
+            celda1.innerHTML=procesoID;
+            celda2.innerHTML=ejecucionTiempo;
+            celda3.innerHTML=llegadaTiempo;
 
             var x = document.getElementById("inputTable").rows.length;
            // console.log(x);
         }
 
 
-        function GetCellValues()
+        function GetValorCelda()
          {
             var pid =[];
             var at =[];
@@ -332,7 +332,7 @@
 
         function printGanttChart()
         {
-            var chartData = generateGanttChartData(GetCellValues());
+            var chartData = generateGanttChartData(GetValorCelda());
             
 
             var chart = AmCharts.makeChart( "chartdiv", 
@@ -410,15 +410,15 @@
 
             for (var i=0;i<pid.length;i++)
             {   
-            var firstRow = table_2.insertRow(i+1);
-            var cell1 = firstRow.insertCell(0);
-            var cell2 = firstRow.insertCell(1);
-            var cell3 = firstRow.insertCell(2);
-            var cell4 = firstRow.insertCell(3);
-                cell1.innerHTML=pid[i];
-                cell2.innerHTML=ct[i];
-                cell3.innerHTML=ta[i];
-                cell4.innerHTML=wt[i];
+            var primeraCelda = table_2.insertRow(i+1);
+            var celda1 = primeraCelda.insertCell(0);
+            var celda2 = primeraCelda.insertCell(1);
+            var celda3 = primeraCelda.insertCell(2);
+            var celda4 = primeraCelda.insertCell(3);
+                celda1.innerHTML=pid[i];
+                celda2.innerHTML=ct[i];
+                celda3.innerHTML=ta[i];
+                celda4.innerHTML=wt[i];
             }
             
         }
