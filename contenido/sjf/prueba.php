@@ -11,7 +11,90 @@
 </head>
 <body>
 
-  Hola
+  <header class="page-header">
+    <h1>Simulador de SFG (Preventivos y no Preventivos)</h1>
+  </header>
+
+  <div class="form-group-2">
+    <label>
+      Elegir simulaciones SJF preventivos  :
+    </label>
+
+    <label class="switch">
+      <input type="checkbox" id="toggle">
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <div class="container-1">
+    <form class="input-form">
+      <div class="form-group">
+        <label>Proceso ID: </label>
+        <input type="number" id="PID" name="PID" value="">
+      </div>
+      <div class="form-group">
+        <label>Tiempo de Ejecucion: </label>
+        <input type="number" id="ejecucionTiempo" value="">
+      </div>
+      <div class="form-group">
+        <label>Tiempo de Llegada: </label>
+        <input type="number" id="llegadaTiempo" value="">
+      </div>
+      <div class="form-group">
+        <button class="button" type="button" onclick="crearTabla()">Ingrese Valores</button>
+      </div>
+
+      <div class="form-group">
+        <button class="button" type="button" onclick="printGanttChart()">Mostrar Grafico de Gantt</button>
+      </div>  
+    </form>
+  </div>
+  </div>  
+  <div class="container">
+    <table id="inputTable">
+      <tr>
+        <th>PID</th>
+        <th>Tiempo de Servicio</th>
+        <th>Tiempo de Llegada</th>
+      </tr>
+    </table>
+  </div>
+  <section class="container-3">
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script src="https://www.amcharts.com/lib/3/gantt.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <div id="chartdiv"></div>   
+
+    <script type="text/javascript">
+    </script>   
+  </section>
+
+  <div>
+    <table id="statTable">
+      <tr>
+        <th>PID</th>
+        <th>Tiempo Completado</th>
+        <th>Tiempo de Respuesta</th>
+        <th>Tiempo de Espera</th>
+      </tr>
+    </table>
+  </div>
+
+  <div id="statTable-s">
+    <div class="block">
+      <label>Tiempo de Espera Promedio: </label>
+      <label id="wtOutput"></label>
+    </div>
+
+    <div class="block">
+      <label>Tiempo de Respuesta Promedio: </label>
+      <label id="taOutput"></label>
+    </div>
+
+  </div>
 
 </body>
 </html>
