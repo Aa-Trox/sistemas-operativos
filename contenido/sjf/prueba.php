@@ -13,7 +13,7 @@
 <body>
 
   <header class="page-header">
-    <h1>Simulador de SFG (Preventivos y no Preventivos)</h1>
+    <h1>Simulador de SJF (Preventivos y no Preventivos)</h1>
   </header>
 
   <div class="form-group-2">

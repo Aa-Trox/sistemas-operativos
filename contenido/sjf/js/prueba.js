@@ -1,12 +1,12 @@
-document.getElementById('PID').addEventListener('change', crearTabla);
-document.getElementById('ejecucionTiempo').addEventListener('change', crearTabla);
-document.getElementById('llegadaTiempo').addEventListener('change', crearTabla);
-document.getElementById('inputTable').addEventListener('change', crearTabla);
+document.getElementById('PID','ejecucionTiempo','llegadaTiempo','inputTable').addEventListener('click', crearTabla);
 document.getElementById('inputTable').addEventListener('change', GetValorCelda);
 //review toggle
 document.getElementById('toggle').addEventListener('change', GetValorCelda);
+//review addeventlistner click for button
 document.getElementById('chartdiv').addEventListener('click', printGanttChart);
-document.getElementById('statTable').addEventListener('click', printStat);
+document.getElementById('statTable').addEventListener('change', printStat);
+document.getElementById('wtOutput').addEventListener('change', printStat);
+document.getElementById('taOutput').addEventListener('change', printStat);
 
 function crearTabla()
 {
