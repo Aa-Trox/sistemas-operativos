@@ -1,7 +1,7 @@
 document.getElementById('PID','ejecucionTiempo','llegadaTiempo','inputTable').addEventListener('click', crearTabla);
-document.getElementById('inputTable').addEventListener('change', GetValorCelda);
+document.getElementById('inputTable').addEventListener('click', GetValorCelda);
 //review toggle
-document.getElementById('toggle').addEventListener('change', GetValorCelda);
+document.getElementById('toggle').addEventListener('click', GetValorCelda);
 //review addeventlistner click for button
 document.getElementById('chartdiv').addEventListener('click', printGanttChart);
 document.getElementById('statTable').addEventListener('change', printStat);
