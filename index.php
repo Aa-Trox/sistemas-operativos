@@ -36,7 +36,7 @@ if (empty($_GET["op"])){
 <body>
 
     <!-- Encabezado -->
-    <div class="row bg-warning border-bottom">
+    <div class="row bg-secondary border-bottom">
         <div class="col-12 p-2 text-center">
 
             <?php include("archivos/encabezado.php"); ?>
@@ -46,7 +46,7 @@ if (empty($_GET["op"])){
     
     <!-- Contenido -->
     <div class="row">
-        <div class="col bg-warning col-lg-3 p-2">
+        <div class="col bg-secondary col-lg-3 p-2">
             
             <?php include("archivos/menuvertical.php") ?>
         
