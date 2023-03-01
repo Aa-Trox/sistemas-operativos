@@ -1,5 +1,5 @@
 body { 
-	background-color: #30303d; 
+	background-color: #343a40; 
 	color: #fff;
 	line-height:1.6em;
 	margin:0;
@@ -37,7 +37,7 @@ body {
 
 .page-header{
 	background-color: #666;
-	color: #30303d;
+	color: #343a40;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	word-spacing: 0.3em;
