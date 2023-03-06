@@ -42,7 +42,6 @@ function GetValorCelda()
     var table = document.getElementById('inputTable');
     for (var r = 1, n = table.rows.length; r < n; r++) {
         for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
-             //console.log(table.rows[r].cells[c].innerHTML);
         }
         pid.push(parseInt(table.rows[r].cells[0].innerHTML));
         bt.push(parseInt(table.rows[r].cells[1].innerHTML));
@@ -91,7 +90,6 @@ function nonPreemptiveSelection(pid,at,bt,flag)
                   min=bt[i];
                   c=i;
               } 
-
       }
       if (c==n) 
           clock++;
@@ -111,6 +109,7 @@ function nonPreemptiveSelection(pid,at,bt,flag)
           tot++;   
       }
   }
+
 
   for(i=0;i<n;i++)
   {
