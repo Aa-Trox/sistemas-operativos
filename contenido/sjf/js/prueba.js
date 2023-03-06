@@ -1,7 +1,7 @@
 document.getElementById('PID','ejecucionTiempo','llegadaTiempo','inputTable').addEventListener('click', crearTabla);
-document.getElementById('inputTable').addEventListener('click', GetValorCelda);
+document.getElementById('inputTable').addEventListener('click', getValorCelda);
 //review toggle
-document.getElementById('toggle').addEventListener('click', GetValorCelda);
+document.getElementById('toggle').addEventListener('click', getValorCelda);
 //review addeventlistner click for button
 document.getElementById('chartdiv').addEventListener('click', printGanttChart);
 document.getElementById('statTable').addEventListener('change', printStat);
@@ -28,15 +28,15 @@ function crearTabla()
    // console.log(x);
 }
 
-function GetValorCelda()
+function getValorCelda()
  {
     var pid =[];
-    var at =[];
-    var bt =[];
-    var flag =[];
+    var tl =[];
+    var ts =[];
+    var bandera =[];
     var bt2=[];
 
-    // items is the sorted list
+    // items es la lista ordenada
     var items = [];
 
     var table = document.getElementById('inputTable');
@@ -44,27 +44,23 @@ function GetValorCelda()
         for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
         }
         pid.push(parseInt(table.rows[r].cells[0].innerHTML));
-        bt.push(parseInt(table.rows[r].cells[1].innerHTML));
-        bt2.push(parseInt(table.rows[r].cells[1].innerHTML));
-        at.push(parseInt(table.rows[r].cells[2].innerHTML));
-        flag.push(0);
+        ts.push(parseInt(table.rows[r].cells[1].innerHTML));
+        tl.push(parseInt(table.rows[r].cells[2].innerHTML));
+        bandera.push(0);
     }
     
     var toggle = document.getElementById("toggle").checked;
-    
-    if (toggle == true)
-        items = preemptiveSelection(pid,at,bt,flag,bt2);
-    else
-        items = nonPreemptiveSelection(pid,at,bt,flag);
+
+    items = ordenarLista(pid,tl,ts,bandera);
     
     return items;
 
 }
 
-function nonPreemptiveSelection(pid,at,bt,flag)
+function ordenarLista(pid,tl,ts,bandera)
 {
   var n = pid.length;
-  var clock = 0;
+  var reloj = 0;
   var tot = 0;
   var items =[];
   var ct=[];
@@ -85,27 +81,27 @@ function nonPreemptiveSelection(pid,at,bt,flag)
       {
           
           var count=0;
-          if ((at[i] <= clock) && (flag[i] == 0) && (bt[i]<min))
+          if ((tl[i] <= reloj) && (bandera[i] == 0) && (ts[i]<min))
               {
-                  min=bt[i];
+                  min=ts[i];
                   c=i;
               } 
       }
       if (c==n) 
-          clock++;
+          reloj++;
       else
       {
           var temp = [];
           temp.push(pid[c]);
-          temp.push(bt[c]);
+          temp.push(ts[c]);
           items.push(temp);
 
-          ct[c]=clock+bt[c];
-          ta[c]=ct[c]-at[c];
-          wt[c]=ta[c]-bt[c];
+          ct[c]=reloj+ts[c];
+          ta[c]=ct[c]-tl[c];
+          wt[c]=ta[c]-ts[c];
           
-          clock+=bt[c];
-          flag[c]=1;
+          reloj+=ts[c];
+          bandera[c]=1;
           tot++;   
       }
   }
@@ -123,10 +119,10 @@ function nonPreemptiveSelection(pid,at,bt,flag)
   return items;
 }
 
-function preemptiveSelection(pid,at,bt,flag,bt2)
+function preemptiveSelection(pid,tl,ts,bandera,bt2)
   {
     var n = pid.length;
-    var clock = 0;
+    var reloj = 0;
     var tot = 0;
     var items =[];
     var ct=[];
@@ -151,9 +147,9 @@ function preemptiveSelection(pid,at,bt,flag,bt2)
         {
 
             var count=0;
-            if ((at[i] <= clock) && (flag[i] == 0) && (bt[i]<min))
+            if ((tl[i] <= reloj) && (bandera[i] == 0) && (ts[i]<min))
                 {
-                    min=bt[i];
+                    min=ts[i];
                     c=i;
                 } 
 
@@ -162,17 +158,17 @@ function preemptiveSelection(pid,at,bt,flag,bt2)
         // Si no hay un c:
         if (c==n)
         {
-            clock+=1;
+            reloj+=1;
         }
         // Si hay un cc:
         else
         {
-            bt[c]--;
-            clock++;
-            if (bt[c]==0)
+            ts[c]--;
+            reloj++;
+            if (ts[c]==0)
             {   
-                ct[c]=clock;
-                flag[c]=1
+                ct[c]=reloj;
+                bandera[c]=1
                 tot++;
             }
 
@@ -208,7 +204,7 @@ function preemptiveSelection(pid,at,bt,flag,bt2)
 
     for(i=0;i<n;i++)
     {
-        ta[i] = ct[i] - at[i];
+        ta[i] = ct[i] - tl[i];
         wt[i] = ta[i] - bt2[i];
         avgwt +=wt[i];
         avgta +=ta[i];
@@ -226,7 +222,7 @@ function generateGanttChartData(data)
 {   
     var n = data.length;
     var finalData = [];
-    var clock = 0;
+    var reloj = 0;
     
     //console.log(n);
 
@@ -243,11 +239,11 @@ function generateGanttChartData(data)
             }
 
         temp.category = "Proceso " + (parseInt(data[i][0])).toString();
-        temp.segments[0].start = clock;
+        temp.segments[0].start = reloj;
         temp.segments[0].duration = data[i][1];
         temp.segments[0].task = "Proceso " + (parseInt(data[i][0])).toString();
 
-        clock = clock + data[i][1];
+        reloj = reloj + data[i][1];
         finalData.push(temp);
     }
      
@@ -256,7 +252,7 @@ function generateGanttChartData(data)
 
 function printGanttChart()
 {
-    var chartData = generateGanttChartData(GetValorCelda());
+    var chartData = generateGanttChartData(getValorCelda());
     
 
     var chart = AmCharts.makeChart( "chartdiv", 

@@ -7,25 +7,14 @@
     <title></title>
 
     <script src="contenido/sjf/js/prueba.js"></script>
-    <link type="text/css" href="contenido/sjf/styles/style.css" rel="stylesheet">
+    <link type="text/css" href="styles/style.css" rel="stylesheet">
 
 </head>
 <body>
 
   <header class="page-header">
-    <h1>Simulador de SJF (Preventivos y no Preventivos)</h1>
+    <h1>&#160Simulador de SJF</h1>
   </header>
-
-  <div class="form-group-2">
-    <label>
-      Elegir simulaciones SJF preventivos  :
-    </label>
-
-    <label class="switch">
-      <input type="checkbox" id="toggle">
-      <span class="slider round"></span>
-    </label>
-  </div>
 
   <div class="container-1">
     <form class="input-form">

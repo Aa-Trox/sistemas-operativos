@@ -3,6 +3,7 @@ body {
 	color: #fff;
 	line-height:1.6em;
 	margin:0;
+
 }
 
 .button{
@@ -15,13 +16,14 @@ body {
 	font-size: 20px;
 	box-shadow: 0 6px #999;
 	border: none;
-  	border-radius: 15px;
-  	cursor: pointer;
-  	outline: none;
+	border-radius: 15px;
+	cursor: pointer;
+	outline: none;
 }
 
 .button:hover{
 	background-color: coral;
+	background-image: url("img/ucateclogo.png");
 }
 
 .button:active {

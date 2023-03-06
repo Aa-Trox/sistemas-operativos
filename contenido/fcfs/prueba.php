@@ -7,13 +7,13 @@
     <title></title>
 
     <script src="contenido/fcfs/js/prueba.js"></script>
-    <link type="text/css" href="contenido/fcfs/styles/style.css" rel="stylesheet">
+    <link type="text/css" href="styles/style.css" rel="stylesheet">
 
 </head>
 <body>
 
   <header class="page-header">
-    <h1>Simulador de FCFS</h1>
+    <h1>&#160Simulador de FCFS</h1>
   </header>
 
   <div class="container-1">

@@ -1,5 +1,5 @@
 document.getElementById('PID','ejecucionTiempo','llegadaTiempo','inputTable').addEventListener('click', crearTabla);
-document.getElementById('inputTable').addEventListener('click', GetValorCelda);
+document.getElementById('inputTable').addEventListener('click', getValorCelda);
 //review addeventlistner click for button
 document.getElementById('chartdiv').addEventListener('click', printGanttChart);
 document.getElementById('statTable').addEventListener('change', printStat);
@@ -26,7 +26,7 @@ function crearTabla()
    // console.log(x);
 }
 
-function GetValorCelda()
+function getValorCelda()
  {
     var pid =[];
     var at =[];
@@ -48,13 +48,13 @@ function GetValorCelda()
         flag.push(0);
     }
     
-    items = ordenarTabla(pid,at,bt,flag);
+    items = ordenarLista(pid,at,bt,flag);
     
     return items;
 
 }
 
-function ordenarTabla(pid,at,bt,flag)
+function ordenarLista(pid,at,bt,flag)
 {
   var n = pid.length;
   var clock = 0;
@@ -150,7 +150,7 @@ function generateGanttChartData(data)
 
 function printGanttChart()
 {
-    var chartData = generateGanttChartData(GetValorCelda());
+    var chartData = generateGanttChartData(getValorCelda());
     
 
     var chart = AmCharts.makeChart( "chartdiv", 

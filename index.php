@@ -2,7 +2,7 @@
 // Controlando los parametros GET que ingresaran a traves de la URL.
 // Ej: localhost/sistemas-operativos/index.php?op=sjf_prueba
 if (empty($_GET["op"])){
-    $ruta = "contenido_principal";
+    $ruta = "sjf/prueba";
 } else {
     $op = $_GET["op"];
     // Seperando nombre carpeta de archivo
@@ -10,7 +10,7 @@ if (empty($_GET["op"])){
     $carpeta = $paratemtros [0]; // Este es el nombre de la carpeta
     $archivo = $paratemtros [1]; // Este es el nombre del archivo "prueba.php"
     if ($carpeta != "") { // Si la carpeta no es vacia
-        $ruta = $carpeta. "/" . $archivo; // leccion1/prueba.php
+        $ruta = $carpeta. "/" . $archivo; // sjf/prueba.php
     } else {
         //Enviar a un archivo de error 404 
     }
