@@ -1,7 +1,5 @@
 document.getElementById('PID','ejecucionTiempo','llegadaTiempo','inputTable').addEventListener('click', crearTabla);
 document.getElementById('inputTable').addEventListener('click', getValorCelda);
-//review toggle
-document.getElementById('toggle').addEventListener('click', getValorCelda);
 //review addeventlistner click for button
 document.getElementById('chartdiv').addEventListener('click', printGanttChart);
 document.getElementById('statTable').addEventListener('change', printStat);
@@ -34,7 +32,6 @@ function getValorCelda()
     var tl =[];
     var ts =[];
     var bandera =[];
-    var bt2=[];
 
     // items es la lista ordenada
     var items = [];
@@ -117,105 +114,6 @@ function ordenarLista(pid,tl,ts,bandera)
   avgta/=n;
   printStat(ct,ta,wt,avgwt,avgta,pid); 
   return items;
-}
-
-function preemptiveSelection(pid,tl,ts,bandera,bt2)
-  {
-    var n = pid.length;
-    var reloj = 0;
-    var tot = 0;
-    var items =[];
-    var ct=[];
-    var ta=[];
-    var wt=[];
-    var avgwt=0;
-    var avgta=0;
-    
-    var count2=0;
-
-    while (true)
-    {
-        var c = n;
-        var min =100;
-        if (tot==n)
-        {
-            items.push(temp);
-            break;
-        }
-            
-        for (var i=0; i< n; i++)
-        {
-
-            var count=0;
-            if ((tl[i] <= reloj) && (bandera[i] == 0) && (ts[i]<min))
-                {
-                    min=ts[i];
-                    c=i;
-                } 
-
-        }
-        
-        // Si no hay un c:
-        if (c==n)
-        {
-            reloj+=1;
-        }
-        // Si hay un cc:
-        else
-        {
-            ts[c]--;
-            reloj++;
-            if (ts[c]==0)
-            {   
-                ct[c]=reloj;
-                bandera[c]=1
-                tot++;
-            }
-
-            if (count2==0)
-            {
-                //temp2 guarda el c previo
-                var temp2=c;
-                var temp = [];
-                temp.push(pid[c]);
-                temp.push(1)
-            }
-
-            else
-            {
-                 if (c==temp2)
-                {
-                    temp[1]++;
-                }
-                else
-                {
-                    items.push(temp);
-                    var temp =[];
-                    temp.push(pid[c]);
-                    temp.push(1);
-                    temp2=c;
-                }
-            }
-            console.log(c); 
-            count2++;
-        }
-           
-    }
-
-    for(i=0;i<n;i++)
-    {
-        ta[i] = ct[i] - tl[i];
-        wt[i] = ta[i] - bt2[i];
-        avgwt +=wt[i];
-        avgta +=ta[i];
-    }
-
-    avgwt/=n;
-    avgta/=n;
-
-    printStat(ct,ta,wt,avgwt,avgta,pid);            
-    return items;
-        
 }
 
 function generateGanttChartData(data)
