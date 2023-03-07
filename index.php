@@ -2,7 +2,7 @@
 // Controlando los parametros GET que ingresaran a traves de la URL.
 // Ej: localhost/sistemas-operativos/index.php?op=sjf_prueba
 if (empty($_GET["op"])){
-    $ruta = "sjf/prueba";
+    $ruta = "misc/hola";
 } else {
     $op = $_GET["op"];
     // Seperando nombre carpeta de archivo
@@ -13,6 +13,7 @@ if (empty($_GET["op"])){
         $ruta = $carpeta. "/" . $archivo; // sjf/prueba.php
     } else {
         //Enviar a un archivo de error 404 
+        $ruta = "misc/error";
     }
 } // if empty
 ?>
