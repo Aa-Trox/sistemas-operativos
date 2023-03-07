@@ -34,7 +34,7 @@ if (empty($_GET["op"])){
 
 </head>
   
-<body>
+<body style="background-image: url('img/ucateclogo.png'); background-repeat:no-repeat; background-attachment: fixed; background-size: cover;">
 
     <!-- Encabezado -->
     <div class="row bg-dark border-bottom">

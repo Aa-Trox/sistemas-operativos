@@ -10,10 +10,10 @@
     <link type="text/css" href="styles/style.css" rel="stylesheet">
 
 </head>
-<body background="img/ucateclogo.png">
+<body>
 
   <header class="page-header">
-    <h1>&#160Bienvenidos a nuestro app</h1>
+    <h1>&#160Bienvenidos a Nuestro Competencias</h1>
   </header>
 </body>
 </html>
