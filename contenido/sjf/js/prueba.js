@@ -46,8 +46,6 @@ function getValorCelda()
         bandera.push(0);
     }
     
-    var toggle = document.getElementById("toggle").checked;
-
     items = ordenarLista(pid,tl,ts,bandera);
     
     return items;

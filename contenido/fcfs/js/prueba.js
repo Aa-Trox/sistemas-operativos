@@ -32,7 +32,6 @@ function getValorCelda()
     var at =[];
     var bt =[];
     var flag =[];
-    var bt2=[];
 
     // items is the sorted list
     var items = [];
@@ -43,7 +42,6 @@ function getValorCelda()
         }
         pid.push(parseInt(table.rows[r].cells[0].innerHTML));
         bt.push(parseInt(table.rows[r].cells[1].innerHTML));
-        bt2.push(parseInt(table.rows[r].cells[1].innerHTML));
         at.push(parseInt(table.rows[r].cells[2].innerHTML));
         flag.push(0);
     }
@@ -56,64 +54,62 @@ function getValorCelda()
 
 function ordenarLista(pid,at,bt,flag)
 {
-  var n = pid.length;
-  var clock = 0;
-  var tot = 0;
-  var items =[];
-  var ct=[];
-  var ta=[];
-  var wt=[];
-  var avgwt=0;
-  var avgta=0;
-  
+    var n = pid.length;
+    var clock = 0;
+    var tot = 0;
+    var items =[];
+    var ct=[];
+    var ta=[];
+    var wt=[];
+    var avgwt=0;
+    var avgta=0;
 
-  while(true)
-  {
-      var min=100;
-      var c = n; // c representa el PID presente
-      if (tot == n)
-          break;
-      
-      for (var i=0; i< n; i++)
-      {
-          
-          var count=0;
-          if ((at[i] <= clock) && (flag[i] == 0) && (bt[i]<min))
-              {
-                  min=bt[i];
-                  c=i;
-              } 
-      }
-      if (c==n) 
-          clock++;
-      else
-      {
-          var temp = [];
-          temp.push(pid[c]);
-          temp.push(bt[c]);
-          items.push(temp);
+    while(true)
+    {
+        var counter=100;
+        var min=100;
+        var c = n; // c representa el PID presente
+        if (tot == n)
+            break;
+        for (var i=0; i < n; i++)
+        {  
+            if ((at[i] <= clock) && (flag[i] == 0) && (bt[i] < min) && (at[i] <= counter))
+            {
+                counter=at[i];
+                min=bt[i];
+                c=i;
+            } 
+        }
+        if (c==n) 
+            clock++;
+        else
+        {
+            var temp = [];
+            temp.push(pid[c]);
+            temp.push(bt[c]);
+            items.push(temp);
 
-          ct[c]=clock+bt[c];
-          ta[c]=ct[c]-at[c];
-          wt[c]=ta[c]-bt[c];
-          
-          clock+=bt[c];
-          flag[c]=1;
-          tot++;   
-      }
-  }
+            ct[c]=clock+bt[c];
+            ta[c]=ct[c]-at[c];
+            wt[c]=ta[c]-bt[c];
+            
+            clock+=bt[c];
+            flag[c]=1;
+            tot++;   
+        }
+    }
 
 
-  for(i=0;i<n;i++)
-  {
-      avgwt +=wt[i];
-      avgta +=ta[i];
-  }
+    for(i=0;i<n;i++)
+    {
+        avgwt +=wt[i];
+        avgta +=ta[i];
+    }
 
-  avgwt/=n;
-  avgta/=n;
-  printStat(ct,ta,wt,avgwt,avgta,pid); 
-  return items;
+    avgwt/=n;
+    avgta/=n;
+    printStat(ct,ta,wt,avgwt,avgta,pid); 
+    return items;
 }
 
 function generateGanttChartData(data)
