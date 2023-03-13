@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <script src="contenido/sjf/js/prueba.js"></script>
+    <script src="contenido/prioridad/js/prueba.js"></script>
     <link type="text/css" href="styles/style.css" rel="stylesheet">
 
 </head>
@@ -34,6 +34,7 @@
         <label>Prioridad: </label>
         <input type="number" id="prioridad" value="">
       </div>
+     
       <div class="form-group">
         <button class="button" type="button" onclick="crearTabla()">Ingrese Valores</button>
       </div>

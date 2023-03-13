@@ -79,12 +79,15 @@ function ordenarLista(pid,tl,ts,pr,bandera)
         
         for (var i=0; i< n; i++)
         {
-            if ((tl[i] <= reloj) && (bandera[i] == 0) && (ts[i]<min) && (pr[i]>=counter))
+            if ((tl[i] <= reloj) && (bandera[i] == 0) && (pr[i]>=counter))
+            {
+                if(ts[i]<min)
                 {
                     counter=pr[i];
                     min=ts[i];
-                    c=i;
-                } 
+                    c=i; 
+                }
+            } 
         }
         if (c==n) 
             reloj++;

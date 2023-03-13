@@ -18,15 +18,9 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="index.php?op=roundrobin_prueba" tabindex="-1" aria-disabled="true">
+    <a class="nav-link active" href="index.php?op=roundrobin_prueba" tabindex="-1" aria-disabled="true">
       <i class="bi bi-file-check"></i>    
       Round Robin 
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="index.php?op=srt_prueba" tabindex="-1" aria-disabled="true">
-      <i class="bi bi-file-check"></i>    
-      SRT  
     </a>
   </li>
 </ul>
