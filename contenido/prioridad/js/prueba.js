@@ -71,22 +71,27 @@ function ordenarLista(pid,tl,ts,pr,bandera)
 
     while(true)
     {
-        var min=100;
-        var counter=0;
+        //var min = 100;
+        var pc = 0;
         var c = n; // c representa el PID presente
         if (tot == n)
             break;
         
         for (var i=0; i< n; i++)
         {
-            if ((tl[i] <= reloj) && (bandera[i] == 0) && (pr[i]>=counter))
+            if ((tl[i] <= reloj) && (bandera[i] == 0) && (pr[i] >= pc))
             {
-                if(ts[i]<min)
+                /*
+                if (ts[i]<min)
                 {
-                    counter=pr[i];
                     min=ts[i];
-                    c=i; 
+                    pc=pr[i];
+                    c=i;       
                 }
+                */
+                //min=ts[i];
+                pc=pr[i];
+                c=i;
             } 
         }
         if (c==n) 

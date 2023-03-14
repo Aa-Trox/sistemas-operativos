@@ -32,6 +32,7 @@ function getValorCelda()
   var tl =[];
   var ts =[];
   var bandera =[];
+  var rrCounter=[];
 
   // items es la lista ordenada
   var items = [];
@@ -43,16 +44,17 @@ function getValorCelda()
     pid.push(parseInt(table.rows[r].cells[0].innerHTML));
     ts.push(parseInt(table.rows[r].cells[1].innerHTML));
     tl.push(parseInt(table.rows[r].cells[2].innerHTML));
+    rrCounter.push(0);
     bandera.push(0);
   }
   
-  items = ordenarLista(pid,tl,ts,bandera);
+  items = ordenarLista(pid,tl,ts,rrCounter,bandera);
   
   return items;
 
 }
 
-function ordenarLista(pid,tl,ts,bandera)
+function ordenarLista(pid,tl,ts,rrCounter,bandera)
 {
   var n = pid.length;
   var reloj = 0;
@@ -67,18 +69,16 @@ function ordenarLista(pid,tl,ts,bandera)
 
   while(true)
   {
-    var min=100;
+    var rrc=100;
     var c = n; // c representa el PID presente
     if (tot == n)
       break;
     
     for (var i=0; i< n; i++)
     {
-        
-      var count=0;
-      if ((tl[i] <= reloj) && (bandera[i] == 0) && (ts[i]<min))
+      if ((tl[i] <= reloj) && (bandera[i] == 0) && (rrCounter[i]<rrc))
       {
-        min=ts[i];
+        rrc=rrCounter[i];
         c=i;
       } 
     }
@@ -88,16 +88,21 @@ function ordenarLista(pid,tl,ts,bandera)
     {
       var temp = [];
       temp.push(pid[c]);
-      temp.push(ts[c]);
+      temp.push(1);
       items.push(temp);
 
-      ct[c]=reloj+ts[c];
+      ct[c]=reloj+1;
       ta[c]=ct[c]-tl[c];
-      wt[c]=ta[c]-ts[c];
+      wt[c]=ta[c]-1;
       
-      reloj+=ts[c];
-      bandera[c]=1;
-      tot++;   
+      ts[c]--;
+      if (ts[c]=0)
+      {
+        bandera[c]=1;
+        tot++;
+      }
+      rrCounter[c]++;
+      reloj++;   
     }
   }
 
