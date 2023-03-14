@@ -23,6 +23,10 @@ function crearTabla()
   celda3.innerHTML=llegadaTiempo;
 
   var x = document.getElementById("inputTable").rows.length;
+
+  document.getElementById("PID").value = parseInt(procesoID) + 1;
+  document.getElementById("ejecucionTiempo").value = "";
+  document.getElementById("llegadaTiempo").value = "";
   // console.log(x);
 }
 
@@ -89,10 +93,6 @@ function ordenarLista(pid,tl,ts,rrCounter,bandera)
       temp.push(pid[c]);
       temp.push(1);
       items.push(temp);
-
-      ct[c]=reloj+1;
-      ta[c]=ct[c]-tl[c];
-      wt[c]=ta[c]-1;
       
       ts[c]--;
       rrCounter[c]++;
@@ -100,6 +100,11 @@ function ordenarLista(pid,tl,ts,rrCounter,bandera)
 
       if (ts[c]==0)
       {
+
+        ct[c]=reloj+ts[c];
+        ta[c]=ct[c]-tl[c];
+        wt[c]=ta[c]-ts[c];
+        
         bandera[c]=1;
         tot++;
       }

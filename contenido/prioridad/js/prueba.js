@@ -1,5 +1,6 @@
-document.getElementById('PID','ejecucionTiempo','llegadaTiempo','prioridad','inputTable').addEventListener('click', crearTabla);
+document.getElementById('PID','ejecucionTiempo','llegadaTiempo','inputTable').addEventListener('click', crearTabla);
 document.getElementById('inputTable').addEventListener('click', getValorCelda);
+//review addeventlistner click for button
 document.getElementById('chartdiv').addEventListener('click', printGanttChart);
 document.getElementById('statTable').addEventListener('change', printStat);
 document.getElementById('wtOutput').addEventListener('change', printStat);
@@ -25,12 +26,17 @@ function crearTabla()
     celda4.innerHTML=prioridad;
 
     var x = document.getElementById("inputTable").rows.length;
-    console.log(x);
+    
+    document.getElementById("PID").value = parseInt(procesoID) + 1;
+    document.getElementById("ejecucionTiempo").value = "";
+    document.getElementById("llegadaTiempo").value = "";
+    document.getElementById("prioridad").value = '';
+    // console.log(x);
 }
 
 function getValorCelda()
  {
-    var pid =[];
+        var pid =[];
     var tl =[];
     var ts =[];
     var pr =[];

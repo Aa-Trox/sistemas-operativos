@@ -23,7 +23,11 @@ function crearTabla()
     celda3.innerHTML=llegadaTiempo;
 
     var x = document.getElementById("inputTable").rows.length;
-   // console.log(x);
+    
+    document.getElementById("PID").value = parseInt(procesoID) + 1;
+    document.getElementById("ejecucionTiempo").value = "";
+    document.getElementById("llegadaTiempo").value = "";
+    // console.log(x);
 }
 
 function getValorCelda()
