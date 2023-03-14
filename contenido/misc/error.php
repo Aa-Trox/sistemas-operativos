@@ -13,7 +13,7 @@
 <body background="img/ucateclogo.png">
 
   <header class="page-header">
-    <h1>&#160Error 404</h1>
+    <h1>&#160Error 404: Page not Found </h1>
   </header>
 </body>
 </html>

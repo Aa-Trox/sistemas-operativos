@@ -1,3 +1,5 @@
+<!--  Autor:  David Pardo -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +37,7 @@
       </div>
 
       <div class="form-group">
-        <button class="button" type="button" onclick="printGanttChart()">Mostrar Grafico de Gantt</button>
+        <button class="button" type="button" onclick="printGanttChart()">Simular</button>
       </div>  
     </form>
   </div>

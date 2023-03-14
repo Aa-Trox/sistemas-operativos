@@ -1,3 +1,9 @@
+<!--    Autores:    - David Abraham Pardo Cordova
+                    - Victor Luis Seleme Carballo 
+                    - Maicol William Arratia Velasco
+
+-->
+
 <?php
 // Controlando los parametros GET que ingresaran a traves de la URL.
 // Ej: localhost/sistemas-operativos/index.php?op=sjf_prueba
@@ -17,6 +23,7 @@ if (empty($_GET["op"])){
     }
 } // if empty
 ?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>  
