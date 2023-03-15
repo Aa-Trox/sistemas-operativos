@@ -25,12 +25,10 @@ function crearTabla()
     celda3.innerHTML=llegadaTiempo;
     celda4.innerHTML=prioridad;
 
-    var x = document.getElementById("inputTable").rows.length;
-    
     document.getElementById("PID").value = parseInt(procesoID) + 1;
     document.getElementById("ejecucionTiempo").value = "";
     document.getElementById("llegadaTiempo").value = "";
-    document.getElementById("prioridad").value = '';
+    document.getElementById("prioridad").value = "";
     // console.log(x);
 }
 

@@ -24,7 +24,7 @@
     <form class="input-form">
       <div class="form-group">
         <label>Proceso ID: </label>
-        <input type="number" id="PID" name="PID" value="">
+        <input disabled type="number" id="PID" name="PID" value="1">
       </div>
       <div class="form-group">
         <label>Tiempo de Ejecucion: </label>

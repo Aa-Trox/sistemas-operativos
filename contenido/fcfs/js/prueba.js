@@ -22,8 +22,6 @@ function crearTabla()
     celda2.innerHTML=ejecucionTiempo;
     celda3.innerHTML=llegadaTiempo;
 
-    var x = document.getElementById("inputTable").rows.length;
-    
     document.getElementById("PID").value = parseInt(procesoID) + 1;
     document.getElementById("ejecucionTiempo").value = "";
     document.getElementById("llegadaTiempo").value = "";

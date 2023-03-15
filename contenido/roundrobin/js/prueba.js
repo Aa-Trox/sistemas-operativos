@@ -22,8 +22,6 @@ function crearTabla()
   celda2.innerHTML=ejecucionTiempo;
   celda3.innerHTML=llegadaTiempo;
 
-  var x = document.getElementById("inputTable").rows.length;
-
   document.getElementById("PID").value = parseInt(procesoID) + 1;
   document.getElementById("ejecucionTiempo").value = "";
   document.getElementById("llegadaTiempo").value = "";
@@ -93,14 +91,14 @@ function ordenarLista(pid,tl,ts,rrCounter,bandera)
       temp.push(pid[c]);
       temp.push(1);
       items.push(temp);
-      
+
       ts[c]--;
       rrCounter[c]++;
       reloj++;   
 
       if (ts[c]==0)
       {
-
+          
         ct[c]=reloj+ts[c];
         ta[c]=ct[c]-tl[c];
         wt[c]=ta[c]-ts[c];
