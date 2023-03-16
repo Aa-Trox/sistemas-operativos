@@ -13,7 +13,7 @@
 <body>
 
   <header class="page-header">
-    <h1>&#160Bienvenidos a Nuestro Proyecto! :D</h1>
+    <h1>&#160Bienvenidos a Nuestro Proyecto!</h1>
   </header>
 </body>
 </html>

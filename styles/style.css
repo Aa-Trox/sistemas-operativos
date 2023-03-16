@@ -5,6 +5,10 @@ body {
 	margin:0;
 }
 
+h2{
+	color: #666;
+}
+
 .button{
 	background-color: #2196F3;
 	color: #30303d;
@@ -52,6 +56,12 @@ body {
 	border: 1px;
 }
 
+.container-2{
+	width: 40%;
+	margin: 10px;
+	border: 1px;
+	color: #2196F3;
+}
 
 .input-form label{
 	display: block;

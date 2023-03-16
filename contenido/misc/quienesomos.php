@@ -15,5 +15,14 @@
   <header class="page-header">
     <h1>&#160Quienes somos? </h1>
   </header>
+  <div class="container-2">
+    <h2>&#160David Abraham Pardo Cordova</h2>
+  </div>
+  <div class="container-2">
+    <h2>&#160Victor Luis Seleme Carballo</h2>
+  </div>
+  <div class="container-2">
+    <h2>&#160Maicol William Arratia Velasco</h2>
+  </div>
 </body>
 </html>
